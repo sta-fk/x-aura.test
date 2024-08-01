@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create company{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Create company</h1>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            {% include 'company/form.html.twig' with {form: form} %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit company {{ company.name }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Edit company {{ company.name }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-5 form-control">
+            {% include 'company/form.html.twig' with {form: form, company: company} %}
+        </div>
+    </div>
+{% endblock %}
