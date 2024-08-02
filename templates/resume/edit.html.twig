@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit {{ vacancy.name }} in {{ vacancy.companyName }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Edit resume on {{ vacancy.name }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-5 form-control">
+            {% include 'resume/form.html.twig' with {form: form, resume: resume} %}
+        </div>
+    </div>
+{% endblock %}

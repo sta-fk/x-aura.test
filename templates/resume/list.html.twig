@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resumes{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Resumes</h1>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Vacancy</th>
+                <th scope="col">Content</th>
+                <th scope="col">Created at</th>
+                <th scope="col">Updated at</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for resume in resumes %}
+                <tr>
+                    <th scope="row">{{ resume.vacancy.name }}</th>
+                    <td>{{ resume.shortContent }}</td>
+                    <td>{{ resume.createdAt|date('Y-m-d') }}</td>
+                    <td>{{ resume.updatedAt is empty ? "" : resume.updatedAt|date('Y-m-d') }}</td>
+                    <td>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('resume_edit', {'id': resume.id}) }}">Edit</a>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('resume_delete', {'id': resume.id}) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-dark" href="{{ path('resume_new') }}" role="button">Create resume</a>
+        </div>
+    </div>
+{% endblock %}
