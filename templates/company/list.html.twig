@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Companies{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Companies</h1>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Site</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for company in companies %}
+                <tr>
+                    <th scope="row">{{ company.name }}</th>
+                    <td>{{ company.site }}</td>
+                    <td>{{ company.address }}</td>
+                    <td>{{ company.phone }}</td>
+                    <td>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('company_edit', {'id': company.id}) }}">Edit</a>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('company_delete', {'id': company.id}) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-dark" href="{{ path('company_new') }}" role="button">Create company</a>
+        </div>
+    </div>
+{% endblock %}
