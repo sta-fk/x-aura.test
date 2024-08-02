@@ -1,0 +1,5 @@
+INSERT INTO cv_management.user (id, email, roles, password, company_id) VALUES (1, 'qwe@qwe.com', '["ROLE_SUPER_ADMIN"]', '$2y$13$NNNV3jRIsTeeB.1XO5tlq.wwrVj6g.2rbEElOIf4yMBETSqHrfpQi', null);
+INSERT INTO cv_management.user (id, email, roles, password, company_id) VALUES (2, 'zemtsov52@clonekhoe.com', '["ROLE_SUPER_ADMIN"]', '$2y$13$NNNV3jRIsTeeB.1XO5tlq.wwrVj6g.2rbEElOIf4yMBETSqHrfpQi', 1);
+INSERT INTO cv_management.user (id, email, roles, password, company_id) VALUES (3, 'des817pd@mytempmail.org', '["ROLE_SUPER_ADMIN"]', '$2y$13$NNNV3jRIsTeeB.1XO5tlq.wwrVj6g.2rbEElOIf4yMBETSqHrfpQi', 2);
+INSERT INTO cv_management.user (id, email, roles, password, company_id) VALUES (4, 'ilovelindsey@toktokmail.com', '["ROLE_SUPER_ADMIN"]', '$2y$13$NNNV3jRIsTeeB.1XO5tlq.wwrVj6g.2rbEElOIf4yMBETSqHrfpQi', null);
+INSERT INTO cv_management.user (id, email, roles, password, company_id) VALUES (5, 'kellystar8918@code-gmail.com', '["ROLE_SUPER_ADMIN"]', '$2y$13$NNNV3jRIsTeeB.1XO5tlq.wwrVj6g.2rbEElOIf4yMBETSqHrfpQi', null);

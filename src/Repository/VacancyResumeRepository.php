@@ -3,10 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\VacancyResume;
-use App\Entity\VacancyResumeMark;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @extends ServiceEntityRepository<VacancyResume>
