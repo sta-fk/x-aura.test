@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\Vacancy;
 use App\Entity\VacancyResume;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
@@ -16,10 +19,12 @@ class ResumeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $allowedVacancies = $options['allowed_vacancies'];
         $builder
             ->add('vacancy', EntityType::class, [
                 'class' => Vacancy::class,
                 'required' => true,
+                'choices' => $allowedVacancies,
             ])
             ->add('content', TextareaType::class, [
                 'required' => true,
@@ -34,6 +39,7 @@ class ResumeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => VacancyResume::class,
+            'allowed_vacancies' => null,
         ]);
     }
 }
