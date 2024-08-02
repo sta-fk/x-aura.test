@@ -27,6 +27,7 @@
                     <td>
                         <a class="btn btn-outline-dark" role="button" href="{{ path('resume_edit', {'id': resume.id}) }}">Edit</a>
                         <a class="btn btn-outline-dark" role="button" href="{{ path('resume_delete', {'id': resume.id}) }}">Delete</a>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('resume_mark_new', {'id': resume.id}) }}">Mark</a>
                     </td>
                 </tr>
             {% endfor %}

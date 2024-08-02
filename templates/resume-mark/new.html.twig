@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Set mark for resume{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Set mark for resume</h1>
+    </div>
+    <div class="row">
+        <h3>{{ vacancy }}</h3>
+        <p>{{ resume.content }}</p>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            {% include 'resume-mark/form.html.twig' with {form: form} %}
+        </div>
+    </div>
+{% endblock %}

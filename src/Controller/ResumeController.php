@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\VacancyResume as Resume;
+use App\Entity\VacancyResume;
 use App\Form\ResumeType;
-use App\Repository\VacancyResumeRepository as ResumeRepository;
+use App\Repository\VacancyResumeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,18 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/resume', name: 'resume_')]
 class ResumeController extends AbstractController
 {
+    public function __construct(
+        private readonly VacancyResumeRepository $resumeRepository,
+    ) {}
+
     #[Route('/new', name: 'new')]
     public function new(
         Request $request,
-        ResumeRepository $repository,
     ): Response
     {
-        $company = new Resume();
+        $company = new VacancyResume();
         $form = $this->createForm(ResumeType::class, $company);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->save($company, true);
+            $this->resumeRepository->save($company, true);
 
             return $this->redirectToRoute('resume_list');
         }
@@ -35,12 +38,10 @@ class ResumeController extends AbstractController
     }
 
     #[Route(path: '/list', name: 'list', methods: ['GET'])]
-    public function list(
-        ResumeRepository $repository,
-    ): Response
+    public function list(): Response
     {
         return $this->render('resume/list.html.twig', [
-            'resumes' => $repository->findAll()
+            'resumes' => $this->resumeRepository->findAll()
         ]);
     }
 
@@ -52,15 +53,14 @@ class ResumeController extends AbstractController
     ]
     public function edit(
         Request $request,
-        Resume $resume,
-        ResumeRepository $repository,
+        VacancyResume $resume,
     ): Response
     {
         $form = $this->createForm(ResumeType::class, $resume);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $resume->setUpdatedAt(new \DateTimeImmutable('now'));
-            $repository->save($resume, true);
+            $resume->updateDate();
+            $this->resumeRepository->save($resume, true);
 
             return $this->redirectToRoute('resume_list');
         }
@@ -78,12 +78,9 @@ class ResumeController extends AbstractController
         requirements: ['resume' => '\d+'],
         methods: ['GET']
     )]
-    public function delete(
-        Resume $resume,
-        ResumeRepository $repository,
-    ): Response
+    public function delete(VacancyResume $resume): Response
     {
-        $repository->remove($resume, true);
+        $this->resumeRepository->remove($resume, true);
 
         return $this->redirectToRoute('resume_list');
     }
