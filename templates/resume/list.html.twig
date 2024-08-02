@@ -11,6 +11,7 @@
             <thead>
             <tr>
                 <th scope="col">Vacancy</th>
+                <th scope="col">Company</th>
                 <th scope="col">Content</th>
                 <th scope="col">Created at</th>
                 <th scope="col">Updated at</th>
@@ -21,6 +22,7 @@
             {% for resume in resumes %}
                 <tr>
                     <th scope="row">{{ resume.vacancy.name }}</th>
+                    <td>{{ resume.vacancy.companyName }}</td>
                     <td>{{ resume.shortContent }}</td>
                     <td>{{ resume.createdAt|date('Y-m-d') }}</td>
                     <td>{{ resume.updatedAt is empty ? "" : resume.updatedAt|date('Y-m-d') }}</td>
