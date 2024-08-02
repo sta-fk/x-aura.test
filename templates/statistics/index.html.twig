@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Resume marks{% endblock %}
+{% block title %}Statistics{% endblock %}
 
 {% block body %}
     <div class="row">
-        <h1>Resume marks</h1>
+        <h1>Statistics</h1>
     </div>
     <div class="row">
         <table class="table">
@@ -13,18 +13,14 @@
                 <th scope="col">Vacancy</th>
                 <th scope="col">Content</th>
                 <th scope="col">Mark</th>
-                <th scope="col">User</th>
-                <th scope="col">Created at</th>
             </tr>
             </thead>
             <tbody>
-            {% for mark in resumesMarks %}
+            {% for resume in rating %}
                 <tr>
-                    <th scope="row">{{ mark.resume.vacancy }}</th>
-                    <td>{{ mark.resume.shortContent }}</td>
-                    <td>{{ mark.mark }}</td>
-                    <td>{{ mark.user.email }}</td>
-                    <td>{{ mark.createdAt|date('Y-m-d') }}</td>
+                    <th scope="row">{{ resume.vacancy }}</th>
+                    <td>{{ resume.shortContent }}</td>
+                    <td>{{ resume.averageMark }}</td>
                 </tr>
             {% endfor %}
             </tbody>

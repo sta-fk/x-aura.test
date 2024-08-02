@@ -102,9 +102,25 @@ class VacancyResume
         return $this;
     }
 
-    /**
-     * @return Collection<int, VacancyResumeMark>
-     */
+    public function getAverageMark(): float
+    {
+        $count = $this->marks->count();
+        if (0 === $count) {
+            return 0;
+        }
+
+        $scores = $this->marks
+            ->map(function ($mark) {
+                return $mark->getMark();
+            })
+            ->getValues();
+
+        $ratingSum = array_sum($scores);
+
+        return round($ratingSum / $count, 2);
+    }
+
+    /** @return Collection<int, VacancyResumeMark> */
     public function getMarks(): Collection
     {
         return $this->marks;
