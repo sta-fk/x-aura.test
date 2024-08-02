@@ -21,7 +21,6 @@ class VacancyResumeRepository extends ServiceEntityRepository
         parent::__construct($registry, VacancyResume::class);
     }
 
-
     public function save(VacancyResume $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

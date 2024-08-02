@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+{{ form_row(form.mark) }}
+<small>{{ form_help(form.mark) }}</small>
+
+<div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        {{ form_row(form.reset) }}
+        {{ form_row(form.submit) }}
+    </div>
+</div>
+
+{{ form_rest(form) }}
+{{ form_end(form) }}

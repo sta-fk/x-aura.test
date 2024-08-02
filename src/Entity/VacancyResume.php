@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VacancyResumeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,9 +28,13 @@ class VacancyResume
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\OneToMany(targetEntity: VacancyResumeMark::class, mappedBy: 'resume')]
+    private Collection $marks;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable('now');
+        $this->marks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,6 +91,43 @@ class VacancyResume
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function updateDate(): static
+    {
+        $this->updatedAt = new \DateTimeImmutable('now');
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, VacancyResumeMark>
+     */
+    public function getMarks(): Collection
+    {
+        return $this->marks;
+    }
+
+    public function addMark(VacancyResumeMark $mark): static
+    {
+        if (!$this->marks->contains($mark)) {
+            $this->marks->add($mark);
+            $mark->setResume($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMark(VacancyResumeMark $mark): static
+    {
+        if ($this->marks->removeElement($mark)) {
+            // set the owning side to null (unless already changed)
+            if ($mark->getResume() === $this) {
+                $mark->setResume(null);
+            }
+        }
 
         return $this;
     }
