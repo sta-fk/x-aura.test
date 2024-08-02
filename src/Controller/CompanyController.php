@@ -30,7 +30,6 @@ class CompanyController extends AbstractController
         }
 
         return $this->render('company/new.html.twig', [
-            'user' => $company,
             'form' => $form,
         ]);
     }

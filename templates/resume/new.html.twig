@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create resume{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Create resume</h1>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            {% include 'resume/form.html.twig' with {form: form} %}
+        </div>
+    </div>
+{% endblock %}
