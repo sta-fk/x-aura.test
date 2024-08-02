@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vacancies{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Vacancies</h1>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Vacancy</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vacancy in vacancies %}
+                <tr>
+                    <th scope="row">{{ vacancy.companyName }}</th>
+                    <td>{{ vacancy.name }}</td>
+                    <td>
+                        <a class="btn btn-outline-dark" role="button" href="{{ path('vacancy_delete', {'id': vacancy.id}) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-dark" href="{{ path('vacancy_new') }}" role="button">Create vacancy</a>
+        </div>
+    </div>
+{% endblock %}

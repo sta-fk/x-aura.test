@@ -1,0 +1,9 @@
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (1, 1, 1, 3, '2024-08-02 17:44:47');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (3, 3, 1, 5, '2024-08-02 17:44:58');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (4, 2, 1, 4, '2024-08-02 17:56:13');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (5, 1, 2, 1, '2024-08-02 17:56:13');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (6, 2, 2, 3, '2024-08-02 17:56:13');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (7, 3, 2, 4, '2024-08-02 17:56:13');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (8, 1, 3, 3, '2024-08-02 17:56:13');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (9, 2, 3, 4, '2024-08-02 17:56:13');
+INSERT INTO cv_management.vacancy_resume_mark (id, resume_id, user_id, mark, created_at) VALUES (10, 3, 3, 5, '2024-08-02 17:56:13');

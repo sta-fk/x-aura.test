@@ -2,17 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\VacancyResume;
-use App\Entity\VacancyResumeMark;
-use App\Form\ResumeMarkType;
-use App\Repository\VacancyResumeMarkRepository;
-use App\Repository\VacancyResumeRepository;
 use App\Service\StatisticsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 #[Route('/statistics', name: 'statistics_')]
 class StatisticsController extends AbstractController
